@@ -5,6 +5,7 @@ export default class Transactions extends React.Component {
   constructor(props) {
     super(props)
     this.state = {data: transactionsData}
+    this.onLogOut = (text) => { console.log("Transactions.onLogOut default callback") }
   }
 
   render() {
@@ -59,7 +60,7 @@ const styles = StyleSheet.create({
     fontFamily: 'Helvetica', fontWeight: '400', fontSize: 21, letterSpacing: 2, textAlign: 'center'
   },
 
-  navSeparator: {height: 0.5, backgroundColor: 'black'},
+  navSeparator: {height: 1, backgroundColor: '#00000099'},
 
   bgImage: {
   	top: 0, left: 0, width: Dimensions.get('screen').width, height: Dimensions.get('screen').height,
@@ -70,7 +71,7 @@ const styles = StyleSheet.create({
   itemContainerStyle: {
     flex: 1, margin: 8, padding: 8,
     backgroundColor: '#dddddd40', borderRadius: 6,
-    borderWidth: 0.5, borderColor: "#00000060", overflow: 'hidden'
+    borderWidth: 0.5, borderColor: "#00000099", overflow: 'hidden'
   },
 
   label: {margin: 4, color: 'white'},

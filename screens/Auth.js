@@ -4,15 +4,12 @@ import Button from 'react-native-button';
 
 export default class Auth extends React.Component {
 
-  // Props
-
-  onAuth = (text) => { console.log("Auth.onAuth default callback") }
-
   // Init
 
   constructor(props) {
     super(props)
     this.state = {email: "", password: ""}
+    this.onAuth = (text) => { console.log("Auth.onAuth default callback") }
   }
 
   // Lifecycle
@@ -68,7 +65,7 @@ export default class Auth extends React.Component {
                     style={canPressLogin ? styles.buttonText : styles.buttonTextDisabled}
                     disabledStyle={styles.buttonTextDisabled}
                     disabled={!canPressLogin}
-                    onPress={this.onSignInPress()}>{ui.text.loginButton}</Button>
+                    onPressOut={() => this.onSignInPress()}>{ui.text.loginButton}</Button>
           </View>
 
           {this.separator(ui.layout.helperSpacing)}
@@ -93,7 +90,7 @@ export default class Auth extends React.Component {
 
   onSignInPress() {
     // TODO: API Connect
-    this.onAuth("placeholder_token")
+    this.props.onAuth("placeholder_token")
   }
 
   // State helpers
@@ -125,7 +122,7 @@ export default class Auth extends React.Component {
     x = ui.layout
     return x.titleSpacing
            + (2 * (2 * x.inputM + x.inputH)) + x.separatorH + x.inputSpacing + 2 * (x.buttonH + x.helperSpacing)
-           + l.helperH + l.signUpSpacing + 2 * (l.helperH + l.bottomSpacing)
+           + x.helperH + x.signUpSpacing + 2 * (x.helperH + x.bottomSpacing)
   }
 }
 
