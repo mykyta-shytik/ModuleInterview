@@ -65,9 +65,9 @@ export default class Auth extends React.Component {
 
           <View style={styles.bgButtonContainer}>
             <Button containerStyle={styles.buttonBox}
-                    style={canPressLogin ? styles.buttonText : styles.buttonTextDisabled} 
-      					    disabledStyle={styles.buttonTextDisabled}
-      					    disabled={!canPressLogin}
+                    style={canPressLogin ? styles.buttonText : styles.buttonTextDisabled}
+                    disabledStyle={styles.buttonTextDisabled}
+                    disabled={!canPressLogin}
                     onPress={this.onSignInPress()}>{ui.text.loginButton}</Button>
           </View>
 
