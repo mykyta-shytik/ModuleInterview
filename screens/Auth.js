@@ -110,27 +110,22 @@ export default class Auth extends React.Component {
   }
 
   isLoginAvailable() {
-  	const email = this.state.email
-  	const password = this.state.password
-  	return ((email.length > 0) && ui.reg.email.test(email) && (password.length > 5))
+    const email = this.state.email
+    const password = this.state.password
+    return ((email.length > 0) && ui.reg.email.test(email) && (password.length > 5))
   }
 
   // Layout helpers
 
   separator(height) { return <View style={{width:ui.layout.contentW, height:height}}/> }
-
   headerContainerStyle() { return {width:ui.layout.contentW, height:this.titlePosition() + ui.layout.titleH} }
-
   titlePosition() { return Dimensions.get("screen").height - this.contentH() }
-
   titlePushViewStyle() { return {width:ui.layout.contentW, height:this.titlePosition()} }
-
   contentH() {
-  	l = ui.layout
-  	return l.titleSpacing 
-  		   + (2 * (2 * l.inputM + l.inputH)) + l.separatorH + l.inputSpacing 
-  		   + 2 * (l.buttonH + l.helperSpacing) + l.helperH
-  		   + l.signUpSpacing + 2 * (l.helperH + l.bottomSpacing)
+    x = ui.layout
+    return x.titleSpacing
+           + (2 * (2 * x.inputM + x.inputH)) + x.separatorH + x.inputSpacing + 2 * (x.buttonH + x.helperSpacing)
+           + l.helperH + l.signUpSpacing + 2 * (l.helperH + l.bottomSpacing)
   }
 }
 
@@ -138,52 +133,50 @@ export default class Auth extends React.Component {
 // UI constants
 
 const ui = {
-	img: {
-		hex: require("ModuleInt/resource/img/hex.png"),
-		bg: require("ModuleInt/resource/img/bg.png")
-	},
+  img: {
+    hex: require("ModuleInt/resource/img/hex.png"),
+    bg: require("ModuleInt/resource/img/bg.png")
+  },
 
 	text: {
-		title: "Välkommen",
-		emailTitle: "E-post",
-		emailPlaceholder: "john@gmail.com",
-		passwordTitle: "Lösenord",
-		passwordPlaceholder: "* * * * * * * *",
-		loginButton: "Logga in",
-		orLabel: "Eller",
-		bankIdButton: "BankID",
-		signUp: "Inte medlem än? Skapa konto"
-	},
+    title: "Välkommen",
+    emailTitle: "E-post",
+    emailPlaceholder: "john@gmail.com",
+    passwordTitle: "Lösenord",
+    passwordPlaceholder: "* * * * * * * *",
+    loginButton: "Logga in",
+    orLabel: "Eller",
+    bankIdButton: "BankID",
+    signUp: "Inte medlem än? Skapa konto"
+  },
 
-	reg: {
-		email: /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/
-	},
+  reg: {
+    email: /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/
+  },
 
 	color: {
 		inputTitle: "#ffffffbb",
-		placeholder: "#ffffff80",
-		buttonBg: "ffffff44",
-		buttonText: "white"
-	},
+    placeholder: "#ffffff80",
+    buttonBg: "ffffff44",
+    buttonText: "white"
+  },
 
-	layout: {
-		sideM: 16,
-		contentW: (Dimensions.get('screen').width - 2 * this.sideM),
-
-		hexY: -20,
-
-		titleH: 35,
-		titleSpacing: 90,
-		inputH: 20,
-		inputM: 8,
-		separatorH: 0.5,
-		inputSpacing: 30,
-		buttonH: 45,
-		helperSpacing: 25,
-		helperH: 13,
-		signUpSpacing: 50,
-		bottomSpacing: 20,
-	}
+  layout: {
+    sideM: 16,
+    contentW: (Dimensions.get('screen').width - 2 * this.sideM),
+    hexY: -20,
+    titleH: 35,
+    titleSpacing: 90,
+    inputH: 20,
+    inputM: 8,
+    separatorH: 0.5,
+    inputSpacing: 30,
+    buttonH: 45,
+    helperSpacing: 25,
+    helperH: 13,
+    signUpSpacing: 50,
+    bottomSpacing: 20
+  }
 }
 
 // Styles
