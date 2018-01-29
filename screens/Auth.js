@@ -23,12 +23,12 @@ export default class Auth extends React.Component {
       <View style={styles.container}>
         <Image style={styles.bgImage} source={ui.img.bg}/>
         <ScrollView style={styles.scroll} showsVerticalScrollIndicator={false}>
-        
-      		<View style={this.headerContainerStyle()}>
-      			<Image style={styles.plainShape} source={ui.img.hex}/>
-      			<View style={this.titlePushViewStyle()}/>
-      			<Text style={styles.header}>{ui.text.title}</Text>
-      		</View>
+
+          <View style={this.headerContainerStyle()}>
+            <Image style={styles.plainShape} source={ui.img.hex}/>
+            <View style={this.titlePushViewStyle()}/>
+            <Text style={styles.header}>{ui.text.title}</Text>
+          </View>
 
       		{this.separator(ui.layout.titleSpacing)}
 
