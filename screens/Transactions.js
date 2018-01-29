@@ -114,7 +114,8 @@ const transactionsData = [
     key: "4",
     name: "Package Delivery Request",
     destination: "6 Rue du Fouarre 75005 Paris France",
-    price: "295.00 kr",
+    author: "Government",
+    price: "335.50 kr",
     status: "Overföring",
     date: "2018-01-20"
   },
