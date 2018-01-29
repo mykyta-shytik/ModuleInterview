@@ -138,7 +138,7 @@ const ui = {
     bg: require("ModuleInt/resource/img/bg.png")
   },
 
-	text: {
+  text: {
     title: "Välkommen",
     emailTitle: "E-post",
     emailPlaceholder: "john@gmail.com",
@@ -154,8 +154,8 @@ const ui = {
     email: /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/
   },
 
-	color: {
-		inputTitle: "#ffffffbb",
+  color: {
+    inputTitle: "#ffffffbb",
     placeholder: "#ffffff80",
     buttonBg: "ffffff44",
     buttonText: "white"
