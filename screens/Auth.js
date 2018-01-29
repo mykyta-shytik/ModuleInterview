@@ -18,12 +18,11 @@ export default class Auth extends React.Component {
 
   render() {
     const canPressLogin = this.isLoginAvailable()
-
     return (
       <View style={styles.container}>
         <Image style={styles.bgImage} source={ui.img.bg}/>
-        <ScrollView style={styles.scroll} showsVerticalScrollIndicator={false}>
 
+        <ScrollView style={styles.scroll} showsVerticalScrollIndicator={false}>
           <View style={this.headerContainerStyle()}>
             <Image style={styles.plainShape} source={ui.img.hex}/>
             <View style={this.titlePushViewStyle()}/>
@@ -37,7 +36,7 @@ export default class Auth extends React.Component {
                        placeholder={ui.text.emailTitle}
                        placeholderTextColor={ui.color.inputTitle}
                        editable={false}/>
-      			<TextInput style={styles.textInput}
+            <TextInput style={styles.textInput}
                        placeholder={ui.text.emailPlaceholder}
                        placeholderTextColor={ui.color.placeholder}
                        autoCorrect={false}
