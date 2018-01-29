@@ -11,7 +11,6 @@ export default class Transactions extends React.Component {
   render() {
     return (
       <View style={styles.container}>
-        <Image style={styles.bgImage} source={ui.img.bg}/>
         <View style={styles.navBar}>
           <View style={styles.statusBar}/>
           <View style={styles.navItem}>
@@ -24,7 +23,7 @@ export default class Transactions extends React.Component {
         <FlatList data={this.state.data}
                   renderItem = {({item}) => 
                     <View style={styles.itemContainerStyle}>
-                      <Text style={styles.label}>{"※  " + item.name}</Text>
+                      <Text style={styles.labelBold}>{"※  " + item.name}</Text>
                       <Text style={styles.label}>{"※  " + item.destination}</Text>
                       <Text style={styles.label}>{"※  " + item.author}</Text>
                       <View style={styles.horizontalStack}>
@@ -40,8 +39,8 @@ export default class Transactions extends React.Component {
 }
 
 const ui = {
-  img: {
-    bg: require("ModuleInt/resource/img/bg.png")
+  layout: {
+    contentInset: {top: 16, left: 0, right: 0, bottom: 0}
   }
 }
 
@@ -57,16 +56,10 @@ const styles = StyleSheet.create({
   navTitle: {
     padding: 10, 
     color: 'white', 
-    fontFamily: 'Helvetica', fontWeight: '400', fontSize: 21, letterSpacing: 2, textAlign: 'center'
+    fontFamily: 'Helvetica', fontWeight: '500', fontSize: 19, letterSpacing: 1, textAlign: 'center'
   },
 
   navSeparator: {height: 1, backgroundColor: '#00000099'},
-
-  bgImage: {
-  	top: 0, left: 0, width: Dimensions.get('screen').width, height: Dimensions.get('screen').height,
-  	position: 'absolute', resizeMode: 'cover',
-  	backgroundColor: '#f76b1c'
-  },
 
   itemContainerStyle: {
     flex: 1, margin: 8, padding: 8,
@@ -74,9 +67,11 @@ const styles = StyleSheet.create({
     borderWidth: 0.5, borderColor: "#00000099", overflow: 'hidden'
   },
 
-  label: {margin: 4, color: 'white'},
+  labelBold: {fontFamily: 'Helvetica', fontSize: 15, fontWeight: '500', margin: 4, color: 'white'},
 
-  horizontalStack: {margin: 12, flex: 1, flexDirection: 'row', justifyContent: 'space-between'}
+  label: {fontFamily: 'Helvetica', fontSize: 13, fontWeight: '400', margin: 4, color: 'white'},
+
+  horizontalStack: {margin: 8, flex: 1, flexDirection: 'row', justifyContent: 'space-between'}
 })
 
 const transactionsData = [

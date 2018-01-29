@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyleSheet, Dimensions, View, Text, Image, TextInput, ScrollView } from 'react-native';
+import { StyleSheet, Dimensions, View, ScrollView, Text, Image, TextInput } from 'react-native';
 import Button from 'react-native-button';
 
 export default class Auth extends React.Component {
@@ -8,7 +8,10 @@ export default class Auth extends React.Component {
 
   constructor(props) {
     super(props)
-    this.state = {email: "", password: ""}
+    this.state = {
+      email: "", password: "",
+      isPerformingRequest: false
+    }
     this.onAuth = (text) => { console.log("Auth.onAuth default callback") }
   }
 
@@ -18,8 +21,6 @@ export default class Auth extends React.Component {
     const canPressLogin = this.isLoginAvailable()
     return (
       <View style={styles.container}>
-        <Image style={styles.bgImage} source={ui.img.bg}/>
-
         <ScrollView style={styles.scroll} showsVerticalScrollIndicator={false}>
           <View style={this.headerContainerStyle()}>
             <Image style={styles.hexImage} source={ui.img.hex}/>
@@ -99,10 +100,8 @@ export default class Auth extends React.Component {
     var result = ""
     const email = this.state.email
     const password = this.state.password
-
     if ((email.length > 0) && !ui.reg.email.test(email)) { result+="Email has incorrect format. " }
     if ((password.length > 0) && (password.length < 5)) { result+="Password entered is too short." }
-
     return result
   }
 
@@ -119,19 +118,18 @@ export default class Auth extends React.Component {
   titlePosition() { return Dimensions.get("screen").height - this.contentH() }
   titlePushViewStyle() { return {width:ui.layout.contentW, height:this.titlePosition()} }
   contentH() {
-    x = ui.layout
+    const x = ui.layout
     return x.titleSpacing
            + (2 * (2 * x.inputM + x.inputH)) + x.separatorH + x.inputSpacing + 2 * (x.buttonH + x.helperSpacing)
            + x.helperH + x.signUpSpacing + 2 * (x.helperH + x.bottomSpacing)
   }
 }
 
-// UI constants
+// UI config
 
 const ui = {
   img: {
-    hex: require("ModuleInt/resource/img/hex.png"),
-    bg: require("ModuleInt/resource/img/bg.png")
+    hex: require("ModuleInt/resource/img/hex.png")
   },
 
   text: {
@@ -175,10 +173,10 @@ const ui = {
   }
 }
 
-// Styles
+// Styles config
 
 const styles = StyleSheet.create({
-  container: {flex: 1, alignItems: 'center', justifyContent: 'center', backgroundColor: '#f76b1c'},
+  container: {flex: 1, alignItems: 'center', justifyContent: 'center'},
 
   bgImage: {
     top: 0, left: 0, width: Dimensions.get('screen').width, height: Dimensions.get('screen').height,
