@@ -1,10 +1,12 @@
-## Module Software interview task
+## Module Software Interview Task
 ### Performed by Mykyta Shytik
 
 ### Files to be reviewed
 * [App](https://github.com/mykyta-shytik/ModuleInterview/blob/master/App.js)
 * [Auth](https://github.com/mykyta-shytik/ModuleInterview/blob/master/screens/Auth.js)
 * [Transactions](https://github.com/mykyta-shytik/ModuleInterview/blob/master/screens/Transactions.js)
+
+## React Native Installation Guide
 
 This project was bootstrapped with [Create React Native App](https://github.com/react-community/create-react-native-app).
 
