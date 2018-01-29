@@ -4,32 +4,26 @@ import Button from 'react-native-button';
 
 export default class Auth extends React.Component {
 
-// Props
+  // Props
 
-onAuth = (text) => { console.log("what is love?") }
+  onAuth = (text) => { console.log("what is love?") }
 
-// Init
-
+  // Init
   constructor(props) {
-  	super(props)
-  	this.state = {
-      email: "", 
-      password: ""
-    }
+    super(props)
+    this.state = {email: "", password: ""}
   }
 
-// Lifecycle
+  // Lifecycle
 
   render() {
-  	const canPressLogin = this.isLoginAvailable()
+    const canPressLogin = this.isLoginAvailable()
 
-  	return (
-  	  <View style={styles.container}>
-
-  	  	<Image style={styles.bgImage} source={ui.img.bg}/>
-
-      	<ScrollView style={styles.scroll} showsVerticalScrollIndicator={false}>
-
+    return (
+      <View style={styles.container}>
+        <Image style={styles.bgImage} source={ui.img.bg}/>
+        <ScrollView style={styles.scroll} showsVerticalScrollIndicator={false}>
+        
       		<View style={this.headerContainerStyle()}>
       			<Image style={styles.plainShape} source={ui.img.hex}/>
       			<View style={this.titlePushViewStyle()}/>
