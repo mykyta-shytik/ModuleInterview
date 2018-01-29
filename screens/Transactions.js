@@ -119,13 +119,13 @@ const transactionsData = [
   },
 
   {
-  	key: "5",
-  	name: "Delivery Request #145098",
-  	destination: "151 Boulevard Hausmann 75008 Paris France",
-  	author: "B2B Delivery Service",
-  	price: "56.20 kr",
-  	status: "Overföring",
-  	date: "2018-01-20"
+    key: "5",
+    name: "Delivery Request #145098",
+    destination: "151 Boulevard Hausmann 75008 Paris France",
+    author: "B2B Delivery Service",
+    price: "56.20 kr",
+    status: "Overföring",
+    date: "2018-01-20"
   },
 
   {

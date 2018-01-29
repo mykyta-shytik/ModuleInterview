@@ -234,5 +234,4 @@ const styles = StyleSheet.create({
     color: "white",
     fontFamily: 'Helvetica', fontSize: 13, textAlign: 'center'
   }
-
 });
