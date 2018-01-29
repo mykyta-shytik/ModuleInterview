@@ -30,36 +30,36 @@ export default class Auth extends React.Component {
             <Text style={styles.header}>{ui.text.title}</Text>
           </View>
 
-      		{this.separator(ui.layout.titleSpacing)}
+          {this.separator(ui.layout.titleSpacing)}
 
-      		<View style={styles.horizontalStack} width={ui.layout.contentW}>
-      			<TextInput style={styles.inputTitle} 
-      					   placeholder={ui.text.emailTitle} 
-      					   placeholderTextColor={ui.color.inputTitle} 
-      					   editable={false}/>
-      			<TextInput style={styles.textInput} 
-      					   placeholder={ui.text.emailPlaceholder} 
-      					   placeholderTextColor={ui.color.placeholder}
-      					   autoCorrect={false}
-      					   autoCapitalize='none'
-      					   onChangeText={(text) => this.setState({email: text})}/>
-      		</View>
+          <View style={styles.horizontalStack} width={ui.layout.contentW}>
+            <TextInput style={styles.inputTitle}
+                       placeholder={ui.text.emailTitle}
+                       placeholderTextColor={ui.color.inputTitle}
+                       editable={false}/>
+      			<TextInput style={styles.textInput}
+                       placeholder={ui.text.emailPlaceholder}
+                       placeholderTextColor={ui.color.placeholder}
+                       autoCorrect={false}
+                       autoCapitalize='none'
+                       onChangeText={(text) => this.setState({email: text})}/>
+          </View>
 
-      		<View style={styles.separator}/>
+          <View style={styles.separator}/>
 
-      		<View style={styles.horizontalStack} width={ui.layout.contentW}>
-      			<TextInput style={styles.inputTitle} 
-      					   placeholder={ui.text.passwordTitle} 
-      					   placeholderTextColor={ui.color.inputTitle} 
-      					   editable={false}/>
-      			<TextInput style={styles.textInput} 
-      					   placeholder={ui.text.passwordPlaceholder} 
-      					   placeholderTextColor={ui.color.placeholder} 
-      					   secureTextEntry={true}
-      					   autoCorrect={false}
-      					   autoCapitalize='none'
-      					   onChangeText={(text) => this.setState({password: text})}/>
-      		</View>
+          <View style={styles.horizontalStack} width={ui.layout.contentW}>
+            <TextInput style={styles.inputTitle}
+                       placeholder={ui.text.passwordTitle}
+                       placeholderTextColor={ui.color.inputTitle}
+                       editable={false}/>
+            <TextInput style={styles.textInput}
+                       placeholder={ui.text.passwordPlaceholder}
+                       placeholderTextColor={ui.color.placeholder}
+                       secureTextEntry={true}
+                       autoCorrect={false}
+                       autoCapitalize='none'
+                       onChangeText={(text) => this.setState({password: text})}/>
+          </View>
 
       		{this.separator(ui.layout.inputSpacing)}
 
