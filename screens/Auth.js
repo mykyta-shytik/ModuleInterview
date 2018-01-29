@@ -12,7 +12,7 @@ export default class Auth extends React.Component {
       email: "", password: "",
       isPerformingRequest: false
     }
-    this.onAuth = (text) => { console.log("Auth.onAuth default callback") }
+    this.props.onAuth = (text) => { console.log("Auth.onAuth default callback") }
   }
 
   // Lifecycle
@@ -42,9 +42,7 @@ export default class Auth extends React.Component {
                        autoCapitalize='none'
                        onChangeText={(text) => this.setState({email: text})}/>
           </View>
-
           <View style={styles.separator}/>
-
           <View style={styles.horizontalStack} width={ui.layout.contentW}>
             <TextInput style={styles.inputTitle}
                        placeholder={ui.text.passwordTitle}
@@ -68,11 +66,9 @@ export default class Auth extends React.Component {
                     disabled={!canPressLogin}
                     onPressOut={() => this.onSignInPress()}>{ui.text.loginButton}</Button>
           </View>
-
           {this.separator(ui.layout.helperSpacing)}
           <Text style={styles.helperLabel}>{ui.text.orLabel}</Text>
           {this.separator(ui.layout.helperSpacing)}
-
           <View style={styles.bgButtonContainer}>
             <Button containerStyle={styles.buttonBox}
                     style={styles.buttonText}
@@ -80,18 +76,39 @@ export default class Auth extends React.Component {
           </View>
 
           {this.separator(ui.layout.signUpSpacing)}
-          <Text style={styles.helperLabel}>{ui.text.signUp}</Text>
+
+          <View style={styles.signUpOuterContainer}>
+            <View style={styles.signUpInnerContainer}>
+              <Text style={styles.helperLabel}>{ui.text.signUp0}</Text>
+              <Text style={styles.helperLabel}>{ui.text.signUp1}</Text>
+              <Text style={styles.helperLabel2}>{ui.text.signUp2}</Text>
+            </View>
+          </View>
 
         </ScrollView>
       </View>
     );
   }
 
-  // Actions
+  // Actions (networking)
 
   onSignInPress() {
-    // TODO: API Connect
-    this.props.onAuth("placeholder_token")
+    fetch('https://sejfqa.stage3.develit.se/api/v1/auth/login', this.authRequestData())
+    .then((response) => response.json())
+    .then((responseJson) => { this.props.onAuth(responseJson.meta.apiToken) })
+    .catch((error) => console.log(error))
+  }
+
+  authRequestData() {
+    return {
+      method: "POST",
+      headers: {Accept: "application/json", "Content-Type": "application/json"},
+      body: JSON.stringify({
+        "email": this.state.email, 
+        "password": this.state.password, 
+        "deviceToken": "ReYNvvfvFFFJAiKb5VIa93etvpgALyuiPf3hb675Zyzbjim1wrgjunwM2aJawTtE"
+      })
+    }
   }
 
   // State helpers
@@ -141,7 +158,9 @@ const ui = {
     loginButton: "Logga in",
     orLabel: "Eller",
     bankIdButton: "BankID",
-    signUp: "Inte medlem än? Skapa konto"
+    signUp0: "                      ",
+    signUp1: "Inte medlem än?",
+    signUp2: "Skapa konto"
   },
 
   reg: {
@@ -176,7 +195,14 @@ const ui = {
 // Styles config
 
 const styles = StyleSheet.create({
+  
+  // Containers
+
   container: {flex: 1, alignItems: 'center', justifyContent: 'center'},
+
+  scroll: {width: Dimensions.get('screen').width - 32, overflow: 'visible', flex: 1},
+
+  // Images
 
   bgImage: {
     top: 0, left: 0, width: Dimensions.get('screen').width, height: Dimensions.get('screen').height,
@@ -189,7 +215,7 @@ const styles = StyleSheet.create({
     opacity: 0.8
   },
 
-  scroll: {width: Dimensions.get('screen').width - 32, overflow: 'visible', flex: 1},
+  // Scroll view elements
 
   header: {
     height: ui.layout.titleH,
@@ -198,7 +224,7 @@ const styles = StyleSheet.create({
   },
 
   textInput: {
-    width: 150, height: ui.layout.inputH,
+    width: 200, height: ui.layout.inputH,
     color: 'white',
     fontFamily: 'Helvetica', fontWeight: '300', fontSize: 17, textAlign: 'right'
   },
@@ -218,15 +244,25 @@ const styles = StyleSheet.create({
 
   bgButtonContainer: {height: ui.layout.buttonH, borderRadius: 6, backgroundColor: '#ffffff55'},
 
-  buttonBox: {padding: 13, height:45, alignItems: 'center'},
+  buttonBox: {padding: 13, height: 45, alignItems: 'center'},
 
-  buttonText: {fontSize:13, color:ui.color.buttonText, textAlign:'center', height:45},
+  buttonText: {fontSize: 13, color: ui.color.buttonText, textAlign: 'center', height: 45},
 
-  buttonTextDisabled: {fontSize:13, color: '#ffffff80', textAlign:'center', height:45},
+  buttonTextDisabled: {fontSize: 13, color: '#ffffff80', textAlign: 'center', height: 45},
 
   helperLabel: {
     height: ui.layout.helperH,
     color: "white",
     fontFamily: 'Helvetica', fontSize: 13, textAlign: 'center'
-  }
+  },
+
+  helperLabel2: {
+    height: ui.layout.helperH,
+    color: "#ffffff80",
+    fontFamily: 'Helvetica', fontSize: 13, textAlign: 'center'
+  },
+
+  signUpOuterContainer: {height: ui.layout.helperH, flex: 1, alignItems: 'center', justifyContent: 'center'},
+
+  signUpInnerContainer: {height: ui.layout.helperH, width: 290, flex: 1, flexDirection: 'row', justifyContent: 'space-between'}
 });
