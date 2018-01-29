@@ -25,7 +25,7 @@ export default class Auth extends React.Component {
 
         <ScrollView style={styles.scroll} showsVerticalScrollIndicator={false}>
           <View style={this.headerContainerStyle()}>
-            <Image style={styles.plainShape} source={ui.img.hex}/>
+            <Image style={styles.hexImage} source={ui.img.hex}/>
             <View style={this.titlePushViewStyle()}/>
             <Text style={styles.header}>{ui.text.title}</Text>
           </View>
@@ -103,7 +103,7 @@ export default class Auth extends React.Component {
     const email = this.state.email
     const password = this.state.password
 
-    if ((email.length > 0) && (ui.reg.email.test(email) == false)) { result+="Email has incorrect format. " }
+    if ((email.length > 0) && !ui.reg.email.test(email)) { result+="Email has incorrect format. " }
     if ((password.length > 0) && (password.length < 5)) { result+="Password entered is too short." }
 
     return result
@@ -128,7 +128,6 @@ export default class Auth extends React.Component {
            + l.helperH + l.signUpSpacing + 2 * (l.helperH + l.bottomSpacing)
   }
 }
-
 
 // UI constants
 
@@ -185,57 +184,41 @@ const styles = StyleSheet.create({
   container: {flex: 1, alignItems: 'center', justifyContent: 'center', backgroundColor: '#f76b1c'},
 
   bgImage: {
-  	top: 0, left: 0, width: Dimensions.get('screen').width, height: Dimensions.get('screen').height,
-  	position: 'absolute',
-  	resizeMode: 'cover'
+    top: 0, left: 0, width: Dimensions.get('screen').width, height: Dimensions.get('screen').height,
+    position: 'absolute', resizeMode: 'cover'
   },
 
-  plainShape: { 
-  	top: ui.layout.hexY, left: Dimensions.get('screen').width - 160, width: 250, height: 250, 
-  	position: 'absolute', 
-  	resizeMode: 'contain', 
-  	opacity: 0.8
+  hexImage: {
+    top: ui.layout.hexY, left: Dimensions.get('screen').width - 160, width: 250, height: 250,
+    position: 'absolute', resizeMode: 'contain',
+    opacity: 0.8
   },
 
   scroll: {width: Dimensions.get('screen').width - 32, overflow: 'visible', flex: 1},
 
   header: {
   	height: ui.layout.titleH,
-  	color: 'white',
-  	fontFamily: 'Helvetica',
-  	fontWeight: '300',
-  	fontSize: 27,
-  	letterSpacing: 4,
-  	textAlign: 'center'
+    color: 'white',
+    fontFamily: 'Helvetica', fontWeight: '300', fontSize: 27, letterSpacing: 4, textAlign: 'center'
   },
 
   textInput: {
-  	textAlign: 'right',
-  	color: 'white',
-  	fontFamily: 'Helvetica',
-  	fontWeight: '300',
-  	fontSize: 17,
-  	height: ui.layout.inputH,
-  	width: 150
+    width: 150, height: ui.layout.inputH,
+    color: 'white',
+    fontFamily: 'Helvetica', fontWeight: '300', fontSize: 17, textAlign: 'right'
   },
 
   horizontalStack: {
-  	flex: 1,
-  	flexDirection: 'row',
-  	justifyContent: 'space-between',
-  	margin: ui.layout.inputM,
-  	height: ui.layout.inputH
+    height: ui.layout.inputH, margin: ui.layout.inputM,
+    flex: 1, flexDirection: 'row', justifyContent: 'space-between'
   },
 
   separator: {height: ui.layout.separatorH, backgroundColor: "#ffffff45"},
 
   inputTitle: {
-  	color: 'white',
-  	fontFamily: 'Helvetica',
-  	fontWeight: '300',
-  	fontSize: 17,
-  	textAlign: 'left',
-  	height: ui.layout.inputH
+    height: ui.layout.inputH,
+    color: 'white',
+    fontFamily: 'Helvetica', fontWeight: '300', fontSize: 17, textAlign: 'left'
   },
 
   bgButtonContainer: {height: ui.layout.buttonH, borderRadius: 6, backgroundColor: '#ffffff55'},
@@ -247,11 +230,9 @@ const styles = StyleSheet.create({
   buttonTextDisabled: {fontSize:13, color: '#ffffff80', textAlign:'center', height:45},
 
   helperLabel: {
-  	height: ui.layout.helperH,
-  	color: "white",
-  	fontFamily: 'Helvetica',
-  	fontSize: 13,
-  	textAlign: 'center'
+    height: ui.layout.helperH,
+    color: "white",
+    fontFamily: 'Helvetica', fontSize: 13, textAlign: 'center'
   }
-
+  
 });
