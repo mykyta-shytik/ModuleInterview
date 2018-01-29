@@ -90,13 +90,13 @@ const transactionsData = [
   },
 
   {
-  	key: "2",
-  	name: "Package Delivery ASAP #421",
-  	destination: "51 Rue Saint-Didier 75116 Paris France",
-  	author: "Private order",
-  	price: "131.50 kr",
-  	status: "Overföring",
-  	date: "2018-01-21"
+    key: "2",
+    name: "Package Delivery ASAP #421",
+    destination: "51 Rue Saint-Didier 75116 Paris France",
+    author: "Private order",
+    price: "131.50 kr",
+    status: "Overföring",
+    date: "2018-01-21"
   },
 
   {
@@ -110,12 +110,12 @@ const transactionsData = [
   },
 
   {
-  	key: "4",
-  	name: "Package Delivery Request",
-  	destination: "6 Rue du Fouarre 75005 Paris France",
-  	price: "295.00 kr",
-  	status: "Overföring",
-  	date: "2018-01-20"
+    key: "4",
+    name: "Package Delivery Request",
+    destination: "6 Rue du Fouarre 75005 Paris France",
+    price: "295.00 kr",
+    status: "Overföring",
+    date: "2018-01-20"
   },
 
   {
