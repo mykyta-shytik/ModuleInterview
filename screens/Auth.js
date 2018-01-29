@@ -6,9 +6,10 @@ export default class Auth extends React.Component {
 
   // Props
 
-  onAuth = (text) => { console.log("what is love?") }
+  onAuth = (text) => { console.log("Auth.onAuth default callback") }
 
   // Init
+
   constructor(props) {
     super(props)
     this.state = {email: "", password: ""}
@@ -60,30 +61,30 @@ export default class Auth extends React.Component {
                        onChangeText={(text) => this.setState({password: text})}/>
           </View>
 
-      		{this.separator(ui.layout.inputSpacing)}
+          {this.separator(ui.layout.inputSpacing)}
 
-      		<View style={styles.bgButtonContainer}>
-      			<Button containerStyle={styles.buttonBox} 
-      					style={canPressLogin ? styles.buttonText : styles.buttonTextDisabled} 
-      					disabledStyle={styles.buttonTextDisabled}
-      					disabled={!canPressLogin}
-                onPress={this.onSignInPress()}>{ui.text.loginButton}</Button>
-      		</View>
+          <View style={styles.bgButtonContainer}>
+            <Button containerStyle={styles.buttonBox}
+                    style={canPressLogin ? styles.buttonText : styles.buttonTextDisabled} 
+      					    disabledStyle={styles.buttonTextDisabled}
+      					    disabled={!canPressLogin}
+                    onPress={this.onSignInPress()}>{ui.text.loginButton}</Button>
+          </View>
 
-      		{this.separator(ui.layout.helperSpacing)}
-      		<Text style={styles.helperLabel}>{ui.text.orLabel}</Text>
-      		{this.separator(ui.layout.helperSpacing)}
+          {this.separator(ui.layout.helperSpacing)}
+          <Text style={styles.helperLabel}>{ui.text.orLabel}</Text>
+          {this.separator(ui.layout.helperSpacing)}
 
-      		<View style={styles.bgButtonContainer}>
-      			<Button containerStyle={styles.buttonBox} 
-      					style={styles.buttonText} 
-      					disabledStyle={styles.buttonTextDisabled}>{ui.text.bankIdButton}</Button>
-      		</View>
+          <View style={styles.bgButtonContainer}>
+            <Button containerStyle={styles.buttonBox}
+                    style={styles.buttonText}
+                    disabledStyle={styles.buttonTextDisabled}>{ui.text.bankIdButton}</Button>
+          </View>
 
-      		{this.separator(ui.layout.signUpSpacing)}
-      		<Text style={styles.helperLabel}>{ui.text.signUp}</Text>
+          {this.separator(ui.layout.signUpSpacing)}
+          <Text style={styles.helperLabel}>{ui.text.signUp}</Text>
 
-      	</ScrollView>
+        </ScrollView>
       </View>
     );
   }
@@ -98,14 +99,14 @@ export default class Auth extends React.Component {
   // State helpers
 
   inputError() {
-  	var result = ""
-  	const email = this.state.email
-  	const password = this.state.password
+    var result = ""
+    const email = this.state.email
+    const password = this.state.password
 
-  	if ((email.length > 0) && (ui.reg.email.test(email) == false)) { result+="Email has incorrect format. " }
-  	if ((password.length > 0) && (password.length < 5)) { result+="Password entered is too short." }
+    if ((email.length > 0) && (ui.reg.email.test(email) == false)) { result+="Email has incorrect format. " }
+    if ((password.length > 0) && (password.length < 5)) { result+="Password entered is too short." }
 
-  	return result
+    return result
   }
 
   isLoginAvailable() {
