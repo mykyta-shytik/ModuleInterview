@@ -197,7 +197,7 @@ const styles = StyleSheet.create({
   scroll: {width: Dimensions.get('screen').width - 32, overflow: 'visible', flex: 1},
 
   header: {
-  	height: ui.layout.titleH,
+    height: ui.layout.titleH,
     color: 'white',
     fontFamily: 'Helvetica', fontWeight: '300', fontSize: 27, letterSpacing: 4, textAlign: 'center'
   },
@@ -234,5 +234,5 @@ const styles = StyleSheet.create({
     color: "white",
     fontFamily: 'Helvetica', fontSize: 13, textAlign: 'center'
   }
-  
+
 });
