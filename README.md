@@ -1,7 +1,5 @@
-## Module Software Interview Task
+## Module Software Interview Task [(Download Demo Video)](https://github.com/mykyta-shytik/ModuleInterview/blob/master/demo.mov)
 ### Performed by Mykyta Shytik
-
-### [Download Demo Video](https://github.com/mykyta-shytik/ModuleInterview/blob/master/demo.mov)
 
 ### Files to be reviewed
 * [App](https://github.com/mykyta-shytik/ModuleInterview/blob/master/App.js)
