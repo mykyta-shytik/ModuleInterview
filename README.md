@@ -8,7 +8,7 @@
 * [Auth](https://github.com/mykyta-shytik/ModuleInterview/blob/master/screens/Auth.js)
 * [Transactions](https://github.com/mykyta-shytik/ModuleInterview/blob/master/screens/Transactions.js)
 
-## React Native Installation Guide
+## Default React Native Application Installation Guide
 
 This project was bootstrapped with [Create React Native App](https://github.com/react-community/create-react-native-app).
 
