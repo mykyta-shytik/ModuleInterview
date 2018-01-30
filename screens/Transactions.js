@@ -23,9 +23,9 @@ export default class Transactions extends React.Component {
         <FlatList data={this.state.data}
                   renderItem = {({item}) => 
                     <View style={styles.itemContainerStyle}>
-                      <Text style={styles.labelBold}>{"※  " + item.name}</Text>
-                      <Text style={styles.label}>{"※  " + item.destination}</Text>
-                      <Text style={styles.label}>{"※  " + item.author}</Text>
+                      <Text style={styles.labelBold}>{"◉  " + item.name}</Text>
+                      <Text style={styles.label}>{"◉  " + item.destination}</Text>
+                      <Text style={styles.label}>{"◉  " + item.author}</Text>
                       <View style={styles.horizontalStack}>
                         <Text style={{color: 'white'}}>{item.price}</Text>
                         <Text style={{color: 'white'}}>{item.status}</Text>
@@ -59,7 +59,7 @@ const styles = StyleSheet.create({
     fontFamily: 'Helvetica', fontWeight: '500', fontSize: 19, letterSpacing: 1, textAlign: 'center'
   },
 
-  navSeparator: {height: 1, backgroundColor: '#00000099'},
+  navSeparator: {height: 0.5, backgroundColor: '#00000099'},
 
   itemContainerStyle: {
     flex: 1, margin: 8, padding: 8,

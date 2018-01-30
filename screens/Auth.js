@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyleSheet, Dimensions, View, ScrollView, Text, Image, TextInput } from 'react-native';
+import { StyleSheet, Dimensions, View, ScrollView, Text, Image, TextInput, ActivityIndicator } from 'react-native';
 import Button from 'react-native-button';
 
 export default class Auth extends React.Component {
@@ -40,6 +40,9 @@ export default class Auth extends React.Component {
                        placeholderTextColor={ui.color.placeholder}
                        autoCorrect={false}
                        autoCapitalize='none'
+                       keyboardType='email-address'
+                       blurOnSubmit={false}
+                       onSubmitEditing={(event) => this.refs.passwordTextInput.focus()}
                        onChangeText={(text) => this.setState({email: text})}/>
           </View>
           <View style={styles.separator}/>
@@ -49,6 +52,7 @@ export default class Auth extends React.Component {
                        placeholderTextColor={ui.color.inputTitle}
                        editable={false}/>
             <TextInput style={styles.textInput}
+                       ref={ui.refs.passwordTextInput}
                        placeholder={ui.text.passwordPlaceholder}
                        placeholderTextColor={ui.color.placeholder}
                        secureTextEntry={true}
@@ -84,7 +88,7 @@ export default class Auth extends React.Component {
               <Text style={styles.helperLabel2}>{ui.text.signUp2}</Text>
             </View>
           </View>
-
+          {this.state.isPerformingRequest ? this.activityIndicator() : <View />}
         </ScrollView>
       </View>
     );
@@ -93,10 +97,15 @@ export default class Auth extends React.Component {
   // Actions (networking)
 
   onSignInPress() {
+    this.showIndicator()
+    setTimeout(() => {this.fetch()}, 1000)
+  }
+
+  fetch() {
     fetch('https://sejfqa.stage3.develit.se/api/v1/auth/login', this.authRequestData())
     .then((response) => response.json())
-    .then((responseJson) => { this.props.onAuth(responseJson.meta.apiToken) })
-    .catch((error) => console.log(error))
+    .then((responseJson) => {this.hideIndicator(); this.props.onAuth(responseJson.meta.apiToken)})
+    .catch((error) => {this.hideIndicator(); console.log(error)})
   }
 
   authRequestData() {
@@ -109,6 +118,14 @@ export default class Auth extends React.Component {
         "deviceToken": "ReYNvvfvFFFJAiKb5VIa93etvpgALyuiPf3hb675Zyzbjim1wrgjunwM2aJawTtE"
       })
     }
+  }
+
+  // Activity indicator
+
+  showIndicator() { this.setState({isPerformingRequest: true}) }
+  hideIndicator() { this.setState({isPerformingRequest: false}) }
+  activityIndicator() { 
+    return (<View style={styles.indicatorContainer}><ActivityIndicator size='large' color='white' /></View>)
   }
 
   // State helpers
@@ -145,6 +162,10 @@ export default class Auth extends React.Component {
 // UI config
 
 const ui = {
+  refs: {
+    passwordTextInput: "passwordTextInput"
+  },
+
   img: {
     hex: require("ModuleInt/resource/img/hex.png")
   },
@@ -178,6 +199,7 @@ const ui = {
     sideM: 16,
     contentW: (Dimensions.get('screen').width - 2 * this.sideM),
     hexY: -20,
+    indicatorS: 80,
     titleH: 35,
     titleSpacing: 90,
     inputH: 20,
@@ -215,6 +237,18 @@ const styles = StyleSheet.create({
     opacity: 0.8
   },
 
+  // Loading indicator
+
+  indicatorContainer: {
+    top: (Dimensions.get('screen').height - ui.layout.indicatorS) / 2,
+    left: (Dimensions.get('screen').width - ui.layout.indicatorS) / 2,
+    width: ui.layout.indicatorS, height: ui.layout.indicatorS,
+    position: 'absolute',
+    backgroundColor: '#ffffff44', 
+    borderRadius: 8, borderColor: '#f76b1c', borderWidth: 0.5, overflow: 'hidden',
+    flex: 1, flexDirection: 'column', justifyContent: 'center', alignItems: 'center',
+  },
+
   // Scroll view elements
 
   header: {
@@ -223,24 +257,24 @@ const styles = StyleSheet.create({
     fontFamily: 'Helvetica', fontWeight: '300', fontSize: 27, letterSpacing: 4, textAlign: 'center'
   },
 
-  textInput: {
-    width: 200, height: ui.layout.inputH,
-    color: 'white',
-    fontFamily: 'Helvetica', fontWeight: '300', fontSize: 17, textAlign: 'right'
-  },
-
   horizontalStack: {
     height: ui.layout.inputH, margin: ui.layout.inputM,
     flex: 1, flexDirection: 'row', justifyContent: 'space-between'
   },
 
-  separator: {height: ui.layout.separatorH, backgroundColor: "#ffffff45"},
-
   inputTitle: {
     height: ui.layout.inputH,
     color: 'white',
-    fontFamily: 'Helvetica', fontWeight: '300', fontSize: 17, textAlign: 'left'
+    fontFamily: 'Helvetica', fontWeight: '400', fontSize: 17, textAlign: 'left'
   },
+
+  textInput: {
+    width: 200, height: ui.layout.inputH,
+    color: 'white',
+    fontFamily: 'Helvetica', fontWeight: '400', fontSize: 17, textAlign: 'right'
+  },
+
+  separator: {height: ui.layout.separatorH, backgroundColor: "#ffffff45"},
 
   bgButtonContainer: {height: ui.layout.buttonH, borderRadius: 6, backgroundColor: '#ffffff55'},
 
