@@ -1,10 +1,10 @@
 import React from 'react';
 import { StyleSheet, Dimensions, View, StatusBar, Image } from 'react-native';
-
 import Button from 'react-native-button';
-
 import Auth from 'ModuleInt/screens/Auth.js'
 import Transactions from 'ModuleInt/screens/Transactions.js'
+
+// App component
 
 export default class App extends React.Component {
 
@@ -28,11 +28,15 @@ export default class App extends React.Component {
   }
 }
 
+// UI config
+
 const ui = {
   img: {
     bg: require("ModuleInt/resource/img/bg.png")
   }
 }
+
+// Styles config
 
 const styles = StyleSheet.create({
   bgImg: {

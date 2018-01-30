@@ -2,17 +2,16 @@ import React from 'react';
 import { StyleSheet, Dimensions, View, ScrollView, Text, Image, TextInput, ActivityIndicator } from 'react-native';
 import Button from 'react-native-button';
 
+// Auth component
+
 export default class Auth extends React.Component {
 
   // Init
 
   constructor(props) {
     super(props)
-    this.state = {
-      email: "", password: "",
-      isPerformingRequest: false
-    }
-    this.props.onAuth = (text) => { console.log("Auth.onAuth default callback") }
+    this.state = {email: ui.text.empty, password: ui.text.empty, isPerformingRequest: false}
+    this.props.onAuth = (text) => { console.log(ui.text.defaultOnAuthMessage) }
   }
 
   // Lifecycle
@@ -98,7 +97,7 @@ export default class Auth extends React.Component {
 
   onSignInPress() {
     this.showIndicator()
-    setTimeout(() => {this.fetch()}, 1000)
+    setTimeout(() => {this.fetch()}, ui.time.requestDelay)
   }
 
   fetch() {
@@ -124,9 +123,7 @@ export default class Auth extends React.Component {
 
   showIndicator() { this.setState({isPerformingRequest: true}) }
   hideIndicator() { this.setState({isPerformingRequest: false}) }
-  activityIndicator() { 
-    return (<View style={styles.indicatorContainer}><ActivityIndicator size='large' color='white' /></View>)
-  }
+  activityIndicator() { return (<View style={styles.indicatorContainer}><ActivityIndicator size='large' color='white' /></View>) }
 
   // State helpers
 
@@ -166,10 +163,6 @@ const ui = {
     passwordTextInput: "passwordTextInput"
   },
 
-  img: {
-    hex: require("ModuleInt/resource/img/hex.png")
-  },
-
   text: {
     title: "Välkommen",
     emailTitle: "E-post",
@@ -181,7 +174,14 @@ const ui = {
     bankIdButton: "BankID",
     signUp0: "                      ",
     signUp1: "Inte medlem än?",
-    signUp2: "Skapa konto"
+    signUp2: "Skapa konto",
+
+    defaultOnAuthMessage: "Auth.onAuth default callback",
+    empty: ""
+  },
+
+  img: {
+    hex: require("ModuleInt/resource/img/hex.png")
   },
 
   reg: {
@@ -193,6 +193,10 @@ const ui = {
     placeholder: "#ffffff80",
     buttonBg: "ffffff44",
     buttonText: "white"
+  },
+
+  time: {
+    requestDelay: 1000
   },
 
   layout: {
